@@ -585,8 +585,26 @@ function submitLead() {
   answers.name = name;
   answers.phone = phone;
 
-  // Save lead data
-  console.log('LEAD CAPTURADO:', answers);
+  // Enviar a Formspree con FormData
+  const formData = new FormData();
+  formData.append('email', phone + '@whatsapp.lead');
+  formData.append('nombre', name);
+  formData.append('whatsapp', phone);
+  formData.append('edad', answers.age);
+  formData.append('frecuencia_cardiaca', answers.hr);
+  formData.append('plancha', answers.plank);
+  formData.append('sentadillas', answers.squat);
+  formData.append('carrera', answers.run);
+  formData.append('cintura_cm', answers.waist);
+  formData.append('sueno', answers.sleep);
+  formData.append('actividad', answers.activity);
+
+  fetch('https://formspree.io/f/xvzlpwov', {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  }).then(r => console.log('Formspree:', r.status))
+    .catch(err => console.error('Formspree error:', err));
 
   showScreen('screen-loading');
   const steps = ['Analizando condición física...','Evaluando sistema cardiovascular...','Calculando edad fitness...','Generando tu informe personalizado...'];
@@ -774,7 +792,7 @@ function showResult() {
 function openWhatsApp() {
   const name = answers.name || '';
   const msg = encodeURIComponent(`¡Hola! Acabo de calcular mi edad fitness y me gustaría recibir una valoración gratuita. Mi nombre es ${name}.`);
-  window.open(`https://wa.me/?text=${msg}`, '_blank');
+  window.open(`https://wa.me/598092520177?text=${msg}`, '_blank');
 }
 </script>
 </body>
