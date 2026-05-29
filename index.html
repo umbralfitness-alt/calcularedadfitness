@@ -1,3 +1,18 @@
+Conversación destacada. Ninguno seleccionado
+
+Ir al contenido
+Uso de Gmail con lectores de pantalla
+2 de 549
+Calculadora de Edad Fitness
+Recibidos
+
+Umbral Fitness <umbralfitness@gmail.com>
+Archivos adjuntos
+19:40 (hace 7 minutos)
+para mí
+
+ Un archivo adjunto
+  •  Analizados por Gmail
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -321,7 +336,38 @@
   <p class="lead-sub">Hemos calculado tu edad fitness. Introduce tu WhatsApp para desbloquear tu informe completo.</p>
   <div class="lead-form">
     <input type="text" class="lead-input" id="lead-name" placeholder="Tu nombre" autocomplete="name">
-    <input type="tel" class="lead-input" id="lead-phone" placeholder="WhatsApp (ej: +598 9X XXX XXX)" autocomplete="tel">
+    <div style="display:flex;gap:8px">
+      <select id="lead-prefix" style="background:#151515;border:1.5px solid #2a2a2a;border-radius:14px;padding:16px 10px;color:#fff;font-family:DM Sans,sans-serif;font-size:14px;outline:none;flex-shrink:0">
+        <option value="+598">🇺🇾 +598</option>
+        <option value="+54">🇦🇷 +54</option>
+        <option value="+56">🇨🇱 +56</option>
+        <option value="+51">🇵🇪 +51</option>
+        <option value="+57">🇨🇴 +57</option>
+        <option value="+52">🇲🇽 +52</option>
+        <option value="+34">🇪🇸 +34</option>
+        <option value="+1">🇺🇸 +1</option>
+        <option value="+55">🇧🇷 +55</option>
+        <option value="+593">🇪🇨 +593</option>
+        <option value="+591">🇧🇴 +591</option>
+        <option value="+595">🇵🇾 +595</option>
+        <option value="+58">🇻🇪 +58</option>
+        <option value="+507">🇵🇦 +507</option>
+        <option value="+506">🇨🇷 +506</option>
+        <option value="+502">🇬🇹 +502</option>
+        <option value="+503">🇸🇻 +503</option>
+        <option value="+504">🇭🇳 +504</option>
+        <option value="+505">🇳🇮 +505</option>
+        <option value="+809">🇩🇴 +809</option>
+        <option value="+53">🇨🇺 +53</option>
+        <option value="+1876">🇯🇲 +1876</option>
+        <option value="+44">🇬🇧 +44</option>
+        <option value="+49">🇩🇪 +49</option>
+        <option value="+39">🇮🇹 +39</option>
+        <option value="+33">🇫🇷 +33</option>
+      </select>
+      <input type="tel" class="lead-input" id="lead-phone" placeholder="Número WhatsApp" autocomplete="tel" style="flex:1">
+    </div>
+    <p style="font-size:11px;color:#555;text-align:center;margin-top:-4px">Si tu país no aparece, escribe el prefijo manualmente al inicio del número. Ej: +123XXXXXXXX</p>
     <div class="checkbox-wrap">
       <input type="checkbox" id="lead-check">
       <label for="lead-check">Acepto recibir mi resultado y recomendaciones personalizadas por WhatsApp.</label>
@@ -573,7 +619,9 @@ function nextQuestion() {
 
 function submitLead() {
   const name = document.getElementById('lead-name').value.trim();
-  const phone = document.getElementById('lead-phone').value.trim();
+  const prefix = document.getElementById('lead-prefix').value;
+  const phoneRaw = document.getElementById('lead-phone').value.trim();
+  const phone = prefix + phoneRaw;
   const check = document.getElementById('lead-check').checked;
   const errEl = document.getElementById('lead-error');
 
@@ -797,3 +845,5 @@ function openWhatsApp() {
 </script>
 </body>
 </html>
+fitness-age-calculator (4).html
+Mostrando fitness-age-calculator (4).html.
